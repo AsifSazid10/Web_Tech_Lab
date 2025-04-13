@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,59 +18,129 @@
           line-height: 15px;
           font-size: 15px;
         }
-        </style>
+    </style>
 </head>
 <body>
-    <img src="web.jpg" alt="Trulli" width="200" height="200" style="border-radius: 50%;" align="center">
+    <img src="web.jpg" alt="WEB" width="200" height="250" style="border-radius: 50%;" align="center">
     <h1>My First Web Tech Project</h1><br>
    
     <div class="flex-container">
-      <div style="background-color: antiquewhite;height: 500px;width: 300px;"> 
+      <div style="background-color: antiquewhite;height: 600px;width: 300px;"> 
        
         <h2>User Registration</h2>
 
-        <form action="/action_page.php">
-          <label for="fname">Full Name:</label><br>
-          <input type="text" id="fname" name="fname" value=""><br>
-          <label for="uemail">Email:</label><br>
-          <input type="text" id="uemail" name="uemail" value=""><br><br>
+        <form onsubmit="return validateForm()">
+          <label for="name">Full Name:</label><br>
+          <input type="text" id="name" name="name" value=""><br>
+
+          <label for="email">Email:</label><br>
+          <input type="text" id="email" name="email" value=""><br><br>
+
           <label for="dob">Date Of Birth:</label>
-  <input type="date" id="dob" name="dob"><br>
+          <input type="date" id="dob" name="dob"><br>
  
-    <p>Gender</p>
-    <input type="radio" id="male" name="gender" value="">
-    <label for="age1">Male</label><br>
-    <input type="radio" id="female" name="gender" value="">
-    <label for="age2">Female</label><br> <br>
+          <p>Gender</p>
+          <input type="radio" id="male" name="gender" value="Male">
+          <label for="age1">Male</label><br>
+          <input type="radio" id="female" name="gender" value="Female">
+          <label for="age2">Female</label><br><br>
   
-    <label for="con">Country:</label>
-    
-    <select id="con">
-      <option value="bd">Bangladesh</option>
-      <option value="aus">Australia</option>
-      <option value="den">Denmark</option>
-      <option value="can">Canada</option>
-    </select><br><br>
+          <label for="con">Country:</label>
+          <select id="con">
+            <option value="">Select Country</option>
+            <option value="bd">Bangladesh</option>
+            <option value="aus">Australia</option>
+            <option value="den">Denmark</option>
+            <option value="can">Canada</option>
+          </select><br><br>
 
-    <label for="pass">Password</label><br>
-    <input type="text" id="pass" name="pass" value=""><br><br>
+          <label for="pass">Password</label><br>
+          <input type="text" id="pass" name="pass" value=""><br><br>
 
-    <label for="conpass">Confirm Password</label><br>
-    <input type="text" id="conpass" name="conpass" value=""><br>
+          <label for="conpass">Confirm Password</label><br>
+          <input type="text" id="conpass" name="conpass" value=""><br>
 
-<p>Terms and Condition </p>
+          <label for="bgcolor">Choose Background Color:</label><br>
+          <input type="color" id="bgcolor" name="bgcolor" onchange="changeBackgroundColor()"><br><br>
 
-  <input type="checkbox" id="term1" name="term1" value="">
-  <label for="term1">  I have read and accept the Privacy Policy.</label><br>
-  <input type="checkbox" id="term2" name="term2" value="">
-  <label for="term2"> I confirm that I am at least 18 years old.</label><br><br>
+          <p>Terms and Condition </p>
+          <input type="checkbox" id="term1" name="term1" value="">
+          <label for="term1">  I have read and accept the Privacy Policy.</label><br>
+          <input type="checkbox" id="term2" name="term2" value="">
+          <label for="term2"> I confirm that I am at least 18 years old.</label><br><br>
   
           <input type="submit" value="Submit">
-          
         </form> 
       </div>
         
-      <div style="background-color: rgb(250, 215, 221);height: 200px;width: 300px;" 
+      <div style="background-color: rgb(250, 215, 221);height: 200px;width: 300px;"></div>
     </div>
+
+    <script>
+      function validateForm() {
+        // Full name check (no numbers)
+        let x = document.getElementById('name');
+        let y = /\d/.test(x.value); // REGEX
+        if (y) {
+        alert("Name must be only letter.");
+       return false;
+
+        }
+
+        // Email format check
+       
+          let email = document.getElementById('email');
+          let emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+          if (!emailFormat) {
+          alert("Invalid email format.");
+          return false;
+        }
+
+        // DOB check
+        const dob = document.getElementById('dob').value;
+        if (dob === '') {
+          alert("Please select your date of birth.");
+          return false;
+        }
+
+        // Gender check
+        const male = document.getElementById('male').checked;
+        const female = document.getElementById('female').checked;
+        if (!male && !female) {
+          alert("Please select your gender.");
+          return false;
+        }
+
+        // Country check
+        const country = document.getElementById('con').value;
+        if (country === '') {
+          alert("Please select your country.");
+          return false;
+        }
+
+        // Password check
+        const pass = document.getElementById('pass').value;
+        const conpass = document.getElementById('conpass').value;
+        if (pass.length < 8) {
+          alert("Password must be at least 8 characters long.");
+          return false;
+        }
+        if (pass !== conpass) {
+          alert("Passwords do not match.");
+          return false;
+        }
+
+        // Terms & Conditions
+        const term1 = document.getElementById('term1').checked;
+        const term2 = document.getElementById('term2').checked;
+        if (!term1 || !term2) {
+          alert("You must agree to the terms and confirm your age.");
+          return false;
+        }
+
+        alert("Form submitted successfully!");
+        return true;
+      }
+    </script>
 </body>
 </html>
