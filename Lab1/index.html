@@ -1,35 +1,50 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        .flex-container {
-          display: flex;
-          flex-direction: column;
-          background-color: rgba(30, 143, 255, 0.313);
-          width: 600px;
-        }
-        
-        .flex-container > div {
-          background-color: #f1f1f1;
-          width: 250px;
-          margin: 1px;
-          text-align: left;
-          line-height: 15px;
-          font-size: 15px;
-        }
-    </style>
+
+<style>
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(30, 143, 255, 0.313);
+      width: 40%;
+      margin-top: 20px;
+    }
+
+    .flex-container > div {   
+      background-color: #f1f1f1;
+      width: 200px;
+      margin: 2px;
+     text-align: left;
+      line-height: 15px;
+      font-size: 15px;
+    }
+       
+
+    h1 {
+      text-align: center;
+    }
+
+
+  </style>
 </head>
-<body>
-    <img src="web.jpg" alt="WEB" width="200" height="250" style="border-radius: 50%;" align="center">
-    <h1>My First Web Tech Project</h1><br>
-   
+<body> 
+
+  <div class="wrapper">
+    <img src="web.jpg" alt="WEB" width="200" height="200" style="border-radius: 50%;">
+    <h1>Registration Box</h1>
+
     <div class="flex-container">
       <div style="background-color: antiquewhite;height: 600px;width: 300px;"> 
-       
-        <h2>User Registration</h2>
+        <h1>User Registration</h1>
 
-        <form onsubmit="return validateForm()">
+          <form onsubmit="return validateForm()">
           <label for="name">Full Name:</label><br>
           <input type="text" id="name" name="name" value=""><br>
 
@@ -38,13 +53,13 @@
 
           <label for="dob">Date Of Birth:</label>
           <input type="date" id="dob" name="dob"><br>
- 
+
           <p>Gender</p>
           <input type="radio" id="male" name="gender" value="Male">
           <label for="age1">Male</label><br>
           <input type="radio" id="female" name="gender" value="Female">
           <label for="age2">Female</label><br><br>
-  
+
           <label for="con">Country:</label>
           <select id="con">
             <option value="">Select Country</option>
@@ -65,82 +80,80 @@
 
           <p>Terms and Condition </p>
           <input type="checkbox" id="term1" name="term1" value="">
-          <label for="term1">  I have read and accept the Privacy Policy.</label><br>
-          <input type="checkbox" id="term2" name="term2" value="">
-          <label for="term2"> I confirm that I am at least 18 years old.</label><br><br>
-  
+          <label for="term1"> I have read and accept the Privacy Policy.
+            <a href="terms.html" target="_blank">Terms and Conditions</a>.
+          </label><br><br><br>
+
           <input type="submit" value="Submit">
         </form> 
       </div>
         
       <div style="background-color: rgb(250, 215, 221);height: 200px;width: 300px;"></div>
     </div>
+  </div>
 
-    <script>
-      function validateForm() {
-        // Full name check (no numbers)
-        let x = document.getElementById('name');
-        let y = /\d/.test(x.value); // REGEX
-        if (y) {
+  <script>
+    function validateForm() {
+      let x = document.getElementById('name');
+      let y = /\d/.test(x.value); 
+      if (y) {
         alert("Name must be only letter.");
-       return false;
-
-        }
-
-        // Email format check
-       
-          let email = document.getElementById('email');
-          let emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
-          if (!emailFormat) {
-          alert("Invalid email format.");
-          return false;
-        }
-
-        // DOB check
-        const dob = document.getElementById('dob').value;
-        if (dob === '') {
-          alert("Please select your date of birth.");
-          return false;
-        }
-
-        // Gender check
-        const male = document.getElementById('male').checked;
-        const female = document.getElementById('female').checked;
-        if (!male && !female) {
-          alert("Please select your gender.");
-          return false;
-        }
-
-        // Country check
-        const country = document.getElementById('con').value;
-        if (country === '') {
-          alert("Please select your country.");
-          return false;
-        }
-
-        // Password check
-        const pass = document.getElementById('pass').value;
-        const conpass = document.getElementById('conpass').value;
-        if (pass.length < 8) {
-          alert("Password must be at least 8 characters long.");
-          return false;
-        }
-        if (pass !== conpass) {
-          alert("Passwords do not match.");
-          return false;
-        }
-
-        // Terms & Conditions
-        const term1 = document.getElementById('term1').checked;
-        const term2 = document.getElementById('term2').checked;
-        if (!term1 || !term2) {
-          alert("You must agree to the terms and confirm your age.");
-          return false;
-        }
-
-        alert("Form submitted successfully!");
-        return true;
+        return false;
       }
-    </script>
+
+      let email = document.getElementById('email');
+      let emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
+      if (!emailFormat) {
+        alert("Invalid email format.");
+
+        
+        return false;
+      }
+
+      const dob = document.getElementById('dob').value;
+      if (dob === '') {
+        alert("Please select your date of birth.");
+        return false;
+      }
+
+      const male = document.getElementById('male').checked;
+      const female = document.getElementById('female').checked;
+      if (!male && !female) {
+        alert("Please select your gender.");
+        return false;
+      }
+
+      const country = document.getElementById('con').value;
+      if (country === '') {
+        alert("Please select your country.");
+        return false;
+      }
+
+      const pass = document.getElementById('pass').value;
+      const conpass = document.getElementById('conpass').value;
+      if (pass.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+      }
+      if (pass !== conpass) {
+        alert("Passwords do not match.");
+        return false;
+      }
+
+      const term1 = document.getElementById('term1').checked;
+      if (!term1) {
+        alert("You must agree to the terms ");
+        return false;
+      }
+
+      alert("Form submitted successfully!");
+      return true;
+    }
+
+    function changeBackgroundColor() {
+      const color = document.getElementById("bgcolor").value;
+      document.body.style.backgroundColor = color;
+    }
+  </script>
 </body>
 </html>
