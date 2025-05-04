@@ -31,7 +31,19 @@
       text-align: center;
     }
 
-
+    table {
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px;
+    }
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
   </style>
 </head>
 <body> 
@@ -84,11 +96,59 @@
             <a href="terms.html" target="_blank">Terms and Conditions</a>.
           </label><br><br><br>
 
-          <input type="submit" value="Submit">
+          <button type="button">Submit</button>
         </form> 
       </div>
         
-      <div style="background-color: rgb(250, 215, 221);height: 200px;width: 300px;"></div>
+      <div style="background-color: rgba(230, 216, 173, 0.902);height: 200px;width: 300px;">
+ 
+        <h1>Sign up</h1>
+        <label for="name">Name</label><br>
+          <input type="text" id="name" name="name" value=""><br>
+          <label for="pass">Password</label><br>
+          <input type="text" id="pass" name="pass" value=""><br><br>
+          <button type="button">Sign in</button>
+      </div>
+      <div style="background-color: rgb(250, 215, 221);height: 200px;width: 300px;">
+
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td> 1</td>
+            <td> 1</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td> 3</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td> 4</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td> 5</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td> 6</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>8</td>
+          </tr>
+        </table>
     </div>
   </div>
 
